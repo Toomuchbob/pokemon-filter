@@ -1,0 +1,14 @@
+.move-element {
+    background-color: whitesmoke;
+    margin: .2em;
+    padding: .2em;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+}
+
+.move-property {
+    margin: .2em;
+    padding: .2em; 
+}
