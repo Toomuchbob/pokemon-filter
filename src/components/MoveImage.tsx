@@ -2,26 +2,19 @@ import { MoveCategory, TypeName } from '@pkmn/dex';
 import { FunctionComponent } from 'react';
 
 interface IMoveImageProps {
-    typeOrCategory: TypeName | MoveCategory;
+    type?: TypeName;
+    category?: MoveCategory
 }
 
-const MoveImage: FunctionComponent<IMoveImageProps> = ({ typeOrCategory }) => {
-
-    const isCategory = (value: TypeName | MoveCategory): string => {
-        switch (value) {
-            case 'Physical':
-                return 'categories';
-            case 'Special':
-                return 'categories';
-            case 'Status':
-                return 'categories';
-            default:
-                return 'types';
-        }
-    };
+const MoveImage: FunctionComponent<IMoveImageProps> = ({ type, category }) => {
 
     return (
-        <img src={`https://play.pokemonshowdown.com/sprites/${isCategory(typeOrCategory)}/${typeOrCategory}.png`} alt={typeOrCategory} height="14" width="32" />
+        <>
+            {type
+                ? <img src={`https://play.pokemonshowdown.com/sprites/types/${type}.png`} alt={type} height="14" width="32" />
+                : <img src={`https://play.pokemonshowdown.com/sprites/categories/${category}.png`} alt={category} height="14" width="32" />
+            }
+        </>
     );
 }
 

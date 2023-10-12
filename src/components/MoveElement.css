@@ -4,11 +4,34 @@
     padding: .2em;
     font-family: Verdana, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 200px 50px 50px 50px 50px 50px;
+    grid-auto-flow: column;
+    border-radius: 4px;
+}
+
+.move-element:hover{
+    background-color: rgb(235, 235, 235);
 }
 
 .move-property {
+    text-align: center;
     margin: .2em;
-    padding: .2em; 
+    padding: .2em;
+    align-self: center;
+}
+
+.description {
+    text-align: left;
+}
+
+.mini {
+    font-size: .8em;
+    color: gray;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
