@@ -13,8 +13,8 @@ const MoveContainer: FunctionComponent = () => {
 
     return (
         <>
-            <MoveField updateInputValue={onChange}/>
-            <MoveList value={inputValue}/>
+            <MoveField updateInputValue={onChange} />
+            <MoveList value={inputValue} />
         </>
     );
 }
