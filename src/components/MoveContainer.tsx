@@ -1,6 +1,7 @@
 import { ChangeEvent, FunctionComponent, useState } from 'react';
 import MoveField from './MoveField';
 import MoveList from './MoveList';
+import { debounce } from 'lodash';
 
 const MoveContainer: FunctionComponent = () => {
 
@@ -13,7 +14,7 @@ const MoveContainer: FunctionComponent = () => {
 
     return (
         <>
-            <MoveField updateInputValue={onChange} />
+            <MoveField updateInputValue={debounce(onChange, 200)} />
             <MoveList value={inputValue} />
         </>
     );
