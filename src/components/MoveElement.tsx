@@ -1,6 +1,6 @@
 import { Move } from '@pkmn/dex';
 import { FunctionComponent } from 'react';
-import './MoveElement.css';
+import './styles/MoveElement.css';
 import TypeImage from './MoveImage';
 
 interface IMoveElementProps {

@@ -1,12 +1,10 @@
-import { FunctionComponent, useEffect } from 'react';
-import MoveList from './components/MoveList';
+import { FunctionComponent } from 'react';
+import MoveContainer from './components/MoveContainer';
 
 const App: FunctionComponent = () => {
 
   return (
-    <>
-      <MoveList />
-    </>
+    <MoveContainer />
   );
 }
 
