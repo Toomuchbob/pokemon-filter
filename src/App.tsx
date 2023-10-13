@@ -1,10 +1,13 @@
 import { FunctionComponent } from 'react';
-import MoveContainer from './components/MoveContainer';
+import FilterElement from './components/FilterElement';
+import FilterElementType from './components/FilterElementType';
 
 const App: FunctionComponent = () => {
 
   return (
-    <MoveContainer />
+    <FilterElement>
+      <FilterElementType />
+    </FilterElement>
   );
 }
 

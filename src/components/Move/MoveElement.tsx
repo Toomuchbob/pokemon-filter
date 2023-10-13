@@ -1,8 +1,7 @@
 import { Move } from '@pkmn/dex';
 import { FunctionComponent } from 'react';
-import './styles/MoveElement.css';
-import TypeImage from './MoveImage';
-import { debounce } from 'lodash';
+import '../styles/MoveElement.css';
+import MoveImage from './MoveImage';
 
 interface IMoveElementProps {
   move: Move;
@@ -21,10 +20,10 @@ const MoveElement: FunctionComponent<IMoveElementProps> = ({ move }) => {
     <div className='move-element' title={move.desc}>
       <div className='move-property'>{move.name}</div>
       <div className='image'>
-        <TypeImage type={move.type} />
+        <MoveImage type={move.type} />
       </div>
       <div className='image'>
-        <TypeImage category={move.category} />
+        <MoveImage category={move.category} />
       </div>
       <div className='move-property'>
         <div className='mini'>Power</div>

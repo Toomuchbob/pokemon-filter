@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Dex } from '@pkmn/dex';
 import MoveElement from './MoveElement';
-import { clone, cloneDeep } from 'lodash';
 
 interface IMoveListProps {
 	value?: string;

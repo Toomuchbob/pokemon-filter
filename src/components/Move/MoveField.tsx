@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, useState } from 'react';
+import { ChangeEvent, FunctionComponent } from 'react';
 
 interface IMoveFieldProps {
     updateInputValue: (event: ChangeEvent<HTMLInputElement>) => void;

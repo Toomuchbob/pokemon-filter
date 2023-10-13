@@ -1,0 +1,35 @@
+.filter-element {
+    background-color: whitesmoke;
+    margin: .2em;
+    padding: .2em;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    border-radius: 4px;
+    display: flex;
+}
+
+.filter-element:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.filter-property {
+    text-align: center;
+    margin: .2em;
+    padding: .2em;
+    align-self: center;
+}
+
+.description {
+    text-align: left;
+}
+
+.mini {
+    font-size: .8em;
+    color: gray;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
