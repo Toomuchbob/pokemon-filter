@@ -8,7 +8,6 @@ const App: FunctionComponent = () => {
   return (
     <>
       <FilterElement />
-      <PokemonContainer />
     </>
   );
 }

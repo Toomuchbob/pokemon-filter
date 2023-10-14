@@ -1,11 +1,11 @@
-import { Dex, Type } from '@pkmn/dex';
-import { ChangeEvent, FunctionComponent, useState } from 'react';
-import MoveImage from './Move/MoveImage';
+import { Dex } from '@pkmn/dex';
+import { ChangeEvent, FunctionComponent } from 'react';
 
+interface IFilterElementTypeProps {
+    bar: (value: string) => void;
+}
 
-const FilterElementType: FunctionComponent = ({ }) => {
-
-    const [selectedProperty, setSelectedProperty] = useState<string>();
+const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ bar }) => {
 
     // TODO: create custom option box using Type images
     const typeList = Dex.types.all()
@@ -13,8 +13,7 @@ const FilterElementType: FunctionComponent = ({ }) => {
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
-        setSelectedProperty(value);
-        console.log(value);
+        bar(value);
     };
 
     return (
