@@ -10,10 +10,12 @@ interface IFilterElementProps {
 const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
 
     const [selectedProperty, setSelectedProperty] = useState<ReactNode>();
-    const [foo, setFoo] = useState<TypeName>();
+    const [type, setType] = useState<[TypeName] | [TypeName, TypeName]>();
 
-    const bar = (value: string) => {
-        setFoo(value as TypeName);
+
+    // TODO: Create Dual-type selector instead of combobox element for type
+    const handleType = (value: [TypeName] | [TypeName, TypeName]) => {
+        setType(value as [TypeName]);
     }
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -33,7 +35,7 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
                 setSelectedProperty(null);
                 break;
             case 'type':
-                setSelectedProperty(<FilterElementType bar={bar} />);
+                setSelectedProperty(<FilterElementType handleType={handleType} />);
                 break;
             default:
                 break;
@@ -53,7 +55,7 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
                 </select>
                 {selectedProperty}
             </div>
-            {foo ? <PokemonContainer field={foo}/> : null}
+            {type ? <PokemonContainer field={type}/> : null}
         </>
     );
 }
