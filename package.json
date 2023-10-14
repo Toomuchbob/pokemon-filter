@@ -5,6 +5,7 @@
   "dependencies": {
     "@pkmn/dex": "^0.7.53",
     "@pkmn/dex-types": "^0.7.53",
+    "@pkmn/img": "^0.2.18",
     "@pkmn/types": "^3.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
