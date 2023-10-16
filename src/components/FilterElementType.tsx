@@ -1,27 +1,43 @@
 import { Dex, TypeName } from '@pkmn/dex';
-import { ChangeEvent, FunctionComponent } from 'react';
+import { MouseEvent, FunctionComponent, useState } from 'react';
+import MoveImage from './Move/MoveImage';
+import './styles/FilterElementType.css';
+import { uniqueId } from 'lodash';
 
 interface IFilterElementTypeProps {
-    handleType: (value: [TypeName] | [TypeName, TypeName]) => void;
+    handleType: (value: TypeName) => void;
 }
 
 const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ handleType }) => {
 
-    // TODO: create custom option box using Type images
-    const typeList = Dex.types.all()
-        .map(type => <option value={type.name}>{type.name}</option>);
+    //TODO: clean up css functionality for handling type choices
+    const [numberPicked, setNumberPicked] = useState<number>(0);
 
-    const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        const { value } = event.target;
-        handleType([value as TypeName]);
+    const onClick = (event: MouseEvent<HTMLButtonElement>) => {
+        const { value, classList } = event.currentTarget;
+
+        handleType(value as TypeName);
+        setNumberPicked(prevNumberPicked => {
+            if (prevNumberPicked > 1) {
+                classList.remove('type-button-pressed');
+                return 0;
+            } else {
+                classList.add('type-button-pressed');
+                return prevNumberPicked++;
+            }
+        });
     };
 
+    const typeList = Dex.types.all()
+    .map(type =>
+        <button className='type-button' value={type.name} onClick={onClick} key={uniqueId()}>
+            <MoveImage type={type.name} />
+        </button>
+    );
+
     return (
-        <div className=''>
-            <select name='filter-type' onChange={onChange}>
-            <option value='???'>???</option>
-                {typeList}
-            </select>
+        <div className='filter-element-type'>
+            {typeList}
         </div>
     );
 }

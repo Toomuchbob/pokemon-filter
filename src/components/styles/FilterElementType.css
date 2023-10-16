@@ -1,0 +1,25 @@
+.filter-element-type {
+    background-color: whitesmoke;
+    margin: .2em;
+    padding: .2em;
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+}
+
+.type-button {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.type-button-pressed {
+    background-color: rgb(190, 190, 190);
+}
+
+.type-button:hover{
+    background-color: rgb(190, 190, 190);
+}
+
