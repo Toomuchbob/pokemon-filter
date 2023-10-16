@@ -1,17 +1,26 @@
 .filter-element-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 2px 4px;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.type-picker {
+    position: absolute;
+    top: 35px;
+    left: 75px;
     background-color: whitesmoke;
-    margin: .2em;
-    padding: .2em;
     display: grid;
-    grid-template-columns: 50px 50px 50px;
+    grid-template-columns: 50px 50px;
 }
 
 .type-button {
     display: flex;
     justify-content: center;
     text-align: center;
-    margin: 2px;
-    padding: 2px;
+    margin: 2px 4px;
     border: 1px solid rgb(190, 190, 190);
 }
 
@@ -20,9 +29,5 @@
 }
 
 .type-button:hover{
-    background-color: rgb(190, 190, 190);
-}
-
-.foo {
-    border-color: purple;
+    background-color: rgb(180, 180, 180);
 }

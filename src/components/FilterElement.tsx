@@ -37,7 +37,7 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
             case 'stat':
                 return null;
             case 'type':
-                return <FilterElementType handleType={handleType} />;
+                return <FilterElementType handleType={handleType} type={type}/>;
             default:
                 break;
         }
