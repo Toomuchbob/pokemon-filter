@@ -1,8 +1,7 @@
 import { Dex, TypeName } from '@pkmn/dex';
-import { MouseEvent, FunctionComponent, useState } from 'react';
+import { MouseEvent, FunctionComponent } from 'react';
 import MoveImage from './Move/MoveImage';
 import './styles/FilterElementType.css';
-import { uniqueId } from 'lodash';
 
 interface IFilterElementTypeProps {
     handleType: (value: TypeName) => void;
@@ -10,27 +9,16 @@ interface IFilterElementTypeProps {
 
 const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ handleType }) => {
 
-    //TODO: clean up css functionality for handling type choices
-    const [numberPicked, setNumberPicked] = useState<number>(0);
-
     const onClick = (event: MouseEvent<HTMLButtonElement>) => {
         const { value, classList } = event.currentTarget;
-
         handleType(value as TypeName);
-        setNumberPicked(prevNumberPicked => {
-            if (prevNumberPicked > 1) {
-                classList.remove('type-button-pressed');
-                return 0;
-            } else {
-                classList.add('type-button-pressed');
-                return prevNumberPicked++;
-            }
-        });
+        
+        classList.toggle('type-button-pressed');
     };
 
     const typeList = Dex.types.all()
-    .map(type =>
-        <button className='type-button' value={type.name} onClick={onClick} key={uniqueId()}>
+    .map((type, index) =>
+        <button className='type-button' value={type.name} onClick={onClick} key={index}>
             <MoveImage type={type.name} />
         </button>
     );

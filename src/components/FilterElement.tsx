@@ -8,8 +8,7 @@ interface IFilterElementProps {
 }
 
 const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
-
-    const [selectedProperty, setSelectedProperty] = useState<ReactNode>();
+    const [property, setProperty] = useState<string>();
     const [type, setType] = useState<TypeName[]>([]);
 
     const handleType = (value: TypeName) => {
@@ -24,23 +23,21 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
+        setProperty(value);
+    };
 
-        switch (value) {
+    const renderFilterComponentByProperty = (): ReactNode => {
+        switch (property) {
             case 'ability':
-                setSelectedProperty(null);
-                break;
+                return null;
             case 'level':
-                setSelectedProperty(null);
-                break;
+                return null;
             case 'move':
-                setSelectedProperty(null);
-                break;
+                return null;
             case 'stat':
-                setSelectedProperty(null);
-                break;
+                return null;
             case 'type':
-                setSelectedProperty(<FilterElementType handleType={handleType} />);
-                break;
+                return <FilterElementType handleType={handleType} />;
             default:
                 break;
         }
@@ -57,9 +54,9 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
                     <option value='stat'>Stat</option>
                     <option value='type'>Type</option>
                 </select>
-                {selectedProperty}
+                {renderFilterComponentByProperty()}
             </div>
-            {type ? <PokemonContainer field={type} /> : null}
+            {<PokemonContainer field={type} />}
         </>
     );
 }
