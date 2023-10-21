@@ -3,23 +3,12 @@ import './styles/FilterElement.css'
 import FilterElementType from './FilterElementType';
 import PokemonContainer from './Pokemon/PokemonContainer';
 import { TypeName } from '@pkmn/dex';
+import { Filters } from '../lib/enums';
+import _ from 'lodash';
 
-interface IFilterElementProps {
-}
-
-const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
+const FilterElement: FunctionComponent = ({ }) => {
     const [property, setProperty] = useState<string>();
     const [type, setType] = useState<TypeName[]>([]);
-
-    const handleType = (value: TypeName) => {
-        setType(prevValue => {
-            if (prevValue.length > 1) {
-                return [value];
-            } else {
-                return [...prevValue, value];
-            }
-        });
-    }
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
@@ -28,16 +17,16 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
 
     const renderFilterComponentByProperty = (): ReactNode => {
         switch (property) {
-            case 'ability':
+            case 'Ability':
                 return null;
-            case 'level':
+            case 'Level':
                 return null;
-            case 'move':
+            case 'Move':
                 return null;
-            case 'stat':
+            case 'Stat':
                 return null;
-            case 'type':
-                return <FilterElementType handleType={handleType} type={type}/>;
+            case 'Type':
+                return <FilterElementType type={type} setType={setType}/>;
             default:
                 break;
         }
@@ -48,11 +37,7 @@ const FilterElement: FunctionComponent<IFilterElementProps> = ({ }) => {
         <>
             <div className='filter-element'>
                 <select name='filter-property' onChange={onChange}>
-                    <option value='ability'>Ability</option>
-                    <option value='level'>Level</option>
-                    <option value='move'>Move</option>
-                    <option value='stat'>Stat</option>
-                    <option value='type'>Type</option>
+                    {_.map(Filters).map((v, i) => <option value={v} key={i}>{v}</option>)}
                 </select>
                 {renderFilterComponentByProperty()}
             </div>

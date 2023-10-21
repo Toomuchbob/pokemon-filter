@@ -1,14 +1,15 @@
 import { Dex, TypeName } from '@pkmn/dex';
-import { FunctionComponent, useState, useEffect, useRef } from 'react';
+import { FunctionComponent, useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import MoveImage from './Move/MoveImage';
 import './styles/FilterElementType.css';
+import { isEqual } from 'lodash';
 
 interface IFilterElementTypeProps {
-    handleType: (value: TypeName) => void;
     type: TypeName[];
+    setType: Dispatch<SetStateAction<TypeName[]>>;
 }
 
-const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ handleType, type }) => {
+const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ type, setType }) => {
     const [displayPicker, setDisplayPicker] = useState<boolean>(false);
 
     const ref = useRef<HTMLDivElement>(null);
@@ -33,14 +34,26 @@ const FilterElementType: FunctionComponent<IFilterElementTypeProps> = ({ handleT
 
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const { value, classList } = event.currentTarget;
-        handleType(value as TypeName);
+        const typeValue = value as TypeName;
 
-        //TODO: persist class when selector is closed
+        setType(prevValue => {
+            if (prevValue.indexOf(typeValue) != -1 || isEqual(prevValue, [typeValue])) {
+                setDisplayPicker(!displayPicker);
+                return prevValue;
+            };
+            
+            if (prevValue.length > 1) {
+                return [typeValue];
+            } else {
+                return [...prevValue, typeValue];
+            };
+        });
+
         classList.toggle('type-button-pressed');
     };
 
     const handleChooseType = () => {
-        // TODO: handle choosing two of same type
+        setType([]);
         setDisplayPicker(!displayPicker);
     }
 
