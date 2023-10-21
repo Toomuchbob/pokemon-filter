@@ -16,7 +16,7 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, fie
         .filter(pkmn => pkmn.isNonstandard === null)
         .filter(pkmn => {
             if (field.at(1)) {
-                return isEqual(pkmn.types, field);
+                return isEqual(pkmn.types, field) || isEqual(pkmn.types.reverse(), field)
             }
 
             if (field.at(0)) {
@@ -32,6 +32,7 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, fie
         .map((pkmn, index) => <img src={pkmn.url} key={index} />);
 
     return (
+        // TODO: Return Pokemon component that shows details of each pokemon
         <ul>
             {pkmnSprites}
         </ul>
