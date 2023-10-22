@@ -5,6 +5,7 @@ import PokemonContainer from './Pokemon/PokemonContainer';
 import { TypeName } from '@pkmn/dex';
 import { Filters } from '../lib/enums';
 import _ from 'lodash';
+import FilterElementMove from './FIlterElementMove';
 
 const FilterElement: FunctionComponent = ({ }) => {
     const [property, setProperty] = useState<string>();
@@ -22,7 +23,8 @@ const FilterElement: FunctionComponent = ({ }) => {
             case 'Level':
                 return null;
             case 'Move':
-                return null;
+                console.log('move')
+                return <FilterElementMove />;
             case 'Stat':
                 return null;
             case 'Type':
