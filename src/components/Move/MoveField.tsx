@@ -2,12 +2,13 @@ import { ChangeEvent, FunctionComponent } from 'react';
 
 interface IMoveFieldProps {
     updateInputValue: (event: ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
 }
 
-const MoveField: FunctionComponent<IMoveFieldProps> = ({ updateInputValue }) => {
+const MoveField: FunctionComponent<IMoveFieldProps> = ({ updateInputValue , className}) => {
 
     return (
-        <input type='text' onChange={updateInputValue}/>
+        <input className={className} type='text' onChange={updateInputValue}/>
     );
 }
 

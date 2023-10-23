@@ -1,11 +1,11 @@
 import { ChangeEvent, FunctionComponent, ReactNode, useState } from 'react';
-import './styles/FilterElement.css'
 import FilterElementType from './FilterElementType';
 import PokemonContainer from './Pokemon/PokemonContainer';
 import { TypeName } from '@pkmn/dex';
 import { Filters } from '../lib/enums';
 import _ from 'lodash';
 import FilterElementMove from './FIlterElementMove';
+import './styles/FilterElement.css'
 
 const FilterElement: FunctionComponent = ({ }) => {
     const [property, setProperty] = useState<string>();
@@ -23,7 +23,6 @@ const FilterElement: FunctionComponent = ({ }) => {
             case 'Level':
                 return null;
             case 'Move':
-                console.log('move')
                 return <FilterElementMove />;
             case 'Stat':
                 return null;
