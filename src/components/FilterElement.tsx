@@ -33,7 +33,6 @@ const FilterElement: FunctionComponent = ({ }) => {
         }
     };
 
-    // TODO: store values in enum library
     return (
         <>
             <div className='filter-element'>
