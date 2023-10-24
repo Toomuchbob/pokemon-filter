@@ -36,7 +36,7 @@ const FilterElement: FunctionComponent = ({ }) => {
     return (
         <>
             <div className='filter-element'>
-                <select name='filter-property' onChange={onChange}>
+                <select name='filter-property' className='filter-property' onChange={onChange}>
                     {_.map(Filters).map((v, i) => <option value={v} key={i}>{v}</option>)}
                 </select>
                 {renderFilterComponentByProperty()}

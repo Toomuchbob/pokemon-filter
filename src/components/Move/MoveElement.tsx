@@ -1,13 +1,14 @@
 import { Move } from '@pkmn/dex';
-import { FunctionComponent } from 'react';
+import { MouseEvent, FunctionComponent, useState } from 'react';
 import '../styles/MoveElement.css';
 import MoveImage from './MoveImage';
 
 interface IMoveElementProps {
   move: Move;
+  onClick: (event: MouseEvent<HTMLInputElement>) => void;
 }
 
-const MoveElement: FunctionComponent<IMoveElementProps> = ({ move }) => {
+const MoveElement: FunctionComponent<IMoveElementProps> = ({ move, onClick }) => {
 
   const getNumberFromMoveProperty = (value: number | true): string => {
     if (typeof value === "number" && value > 0) {
@@ -17,7 +18,7 @@ const MoveElement: FunctionComponent<IMoveElementProps> = ({ move }) => {
   }
 
   return (
-    <div className='move-element' title={move.desc}>
+    <div className='move-element' id={move.name} title={move.desc} onClick={onClick} >
       <div className='move-property'>{move.name}</div>
       <div className='image'>
         <MoveImage type={move.type} />

@@ -16,7 +16,7 @@
     text-align: center;
     margin: .2em;
     padding: .2em;
-    align-self: center;
+    align-self:flex-start;
 }
 
 .description {
