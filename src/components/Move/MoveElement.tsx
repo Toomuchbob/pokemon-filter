@@ -18,7 +18,7 @@ const MoveElement: FunctionComponent<IMoveElementProps> = ({ move, onClick }) =>
   }
 
   return (
-    <div className='move-element' id={move.name} title={move.desc} onClick={onClick} >
+    <div className='move-element' id={move.id} title={move.desc} onClick={onClick} >
       <div className='move-property'>{move.name}</div>
       <div className='image'>
         <MoveImage type={move.type} />

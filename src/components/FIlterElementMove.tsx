@@ -1,24 +1,28 @@
-import { FocusEvent, MouseEvent, FunctionComponent, useState, ChangeEvent, useRef, useEffect } from 'react';
+import {
+    FocusEvent,
+    MouseEvent,
+    FunctionComponent,
+    useState,
+    ChangeEvent,
+    useRef,
+    Dispatch,
+    SetStateAction
+} from 'react';
 import { debounce } from 'lodash';
 import MoveField from './Move/MoveField';
-import './styles/FilterElementMove.css';
 import MoveList from './Move/MoveList';
+import './styles/FilterElementMove.css';
 
 interface IFilterElementMoveProps {
+    setSelectedMoves: Dispatch<SetStateAction<string[]>>;
 }
 
-const FilterElementMove: FunctionComponent<IFilterElementMoveProps> = ({ }) => {
+const FilterElementMove: FunctionComponent<IFilterElementMoveProps> = ({ setSelectedMoves }) => {
 
-    const [selectedMoves, setSelectedMoves] = useState<string[]>(['', '', '', '']);
     const [currentTargetValue, setCurrentTargetValue] = useState<string>('');
     const [currentTargetPreviousValue, setCurrentTargetPreviousValue] = useState<string>('');
 
     let focusedInput = useRef<HTMLInputElement | null>(null);
-
-    useEffect(() => {
-        console.log(currentTargetValue);
-        console.log(selectedMoves);
-    })
 
     const onClick = (event: MouseEvent<HTMLDivElement>) => {
         const moveNameFromId = event.currentTarget.id;

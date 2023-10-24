@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, ReactNode, useState } from 'react';
+import { ChangeEvent, FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import FilterElementType from './FilterElementType';
 import PokemonContainer from './Pokemon/PokemonContainer';
 import { TypeName } from '@pkmn/dex';
@@ -10,6 +10,12 @@ import './styles/FilterElement.css'
 const FilterElement: FunctionComponent = ({ }) => {
     const [property, setProperty] = useState<string>();
     const [type, setType] = useState<TypeName[]>([]);
+    const [selectedMoves, setSelectedMoves] = useState<string[]>(['', '', '', '']);
+
+
+    useEffect(() => {
+        console.log(selectedMoves);
+    }, selectedMoves);
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
@@ -23,11 +29,11 @@ const FilterElement: FunctionComponent = ({ }) => {
             case 'Level':
                 return null;
             case 'Move':
-                return <FilterElementMove />;
+                return <FilterElementMove setSelectedMoves={setSelectedMoves} />;
             case 'Stat':
                 return null;
             case 'Type':
-                return <FilterElementType type={type} setType={setType}/>;
+                return <FilterElementType type={type} setType={setType} />;
             default:
                 break;
         }
@@ -41,7 +47,7 @@ const FilterElement: FunctionComponent = ({ }) => {
                 </select>
                 {renderFilterComponentByProperty()}
             </div>
-            {<PokemonContainer field={type} />}
+            {<PokemonContainer field={type} sort={property} />}
         </>
     );
 }

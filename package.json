@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@pkmn/data": "^0.7.54",
     "@pkmn/dex": "^0.7.53",
     "@pkmn/dex-types": "^0.7.53",
     "@pkmn/img": "^0.2.18",
