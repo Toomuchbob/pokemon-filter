@@ -4,7 +4,7 @@ import MoveElement from './MoveElement';
 
 interface IMoveListProps {
 	value?: string;
-	onClick: (event: MouseEvent<HTMLInputElement>) => void;
+	onClick: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
 const MoveList: FunctionComponent<IMoveListProps> = ({ value, onClick }) => {
