@@ -11,7 +11,7 @@ const MoveList: FunctionComponent<IMoveListProps> = ({ value, onClick }) => {
 
 	const inputValue = value ? value : '';
 
-	const moveList = Dex.moves.all()
+	const moveList = Dex.mod('gen9').moves.all()
 		.filter(move => move.name.includes(inputValue))
 		.map((move, i) => <MoveElement move={move} key={i} onClick={onClick} />);
 

@@ -35,7 +35,7 @@ const FilterElementMove: FunctionComponent<IFilterElementMoveProps> = ({ setSele
         };
         setSelectedMoves(moves => {
             moves?.splice(Number(focusedInputId), 1, moveNameFromId);
-            return moves;
+            return [...moves];
         });
     };
 
@@ -46,7 +46,7 @@ const FilterElementMove: FunctionComponent<IFilterElementMoveProps> = ({ setSele
 
         setSelectedMoves(moves => {
             moves?.splice(Number(focusedInputId), 1, value);
-            return moves;
+            return [...moves];
         });
     };
 
@@ -55,8 +55,6 @@ const FilterElementMove: FunctionComponent<IFilterElementMoveProps> = ({ setSele
 
         focusedInput.current = event.target;
         focusedInput.current ? setCurrentTargetPreviousValue(value) : setCurrentTargetPreviousValue('');
-
-        setCurrentTargetValue(value);
     };
 
     // TODO: refactor container design, move list within filter, moves in separate component (MoveContainer)

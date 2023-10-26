@@ -4,18 +4,17 @@ import PokemonContainer from './Pokemon/PokemonContainer';
 import { TypeName } from '@pkmn/dex';
 import { Filters } from '../lib/enums';
 import _ from 'lodash';
-import FilterElementMove from './FIlterElementMove';
+import FilterElementMove from './FilterElementMove';
 import './styles/FilterElement.css'
 
 const FilterElement: FunctionComponent = ({ }) => {
     const [property, setProperty] = useState<string>();
     const [type, setType] = useState<TypeName[]>([]);
-    const [selectedMoves, setSelectedMoves] = useState<string[]>(['', '', '', '']);
-
+    const [selectedMoves, setSelectedMoves] = useState<string[]>([]);
 
     useEffect(() => {
-        console.log(selectedMoves);
-    }, selectedMoves);
+        console.log(selectedMoves)
+    }, [selectedMoves])
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
@@ -47,7 +46,7 @@ const FilterElement: FunctionComponent = ({ }) => {
                 </select>
                 {renderFilterComponentByProperty()}
             </div>
-            {<PokemonContainer field={type} sort={property} />}
+            {<PokemonContainer type={type} moveList={selectedMoves} sort={property} />}
         </>
     );
 }
