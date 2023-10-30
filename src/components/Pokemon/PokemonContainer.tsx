@@ -12,12 +12,12 @@ interface IPokemonContainerProps {
 
 const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, type, moveList }) => {
 
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<Species[]>([]);
 
     // TODO: add functionality for searching by generation
-
     const filterPokemon = async (sort?: string) => {
         let verifiedMons: Species[];
+        console.log(sort);
 
         switch (sort) {
             case 'Ability':
@@ -25,7 +25,6 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, typ
             case 'Level':
                 return [];
             case 'Move':
-
             //TODO: Cleanup and refactor code
                 const gens = new Generations(Dex);
                 const foo = Dex.mod('gen9').species.all()
@@ -66,27 +65,19 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, typ
         }
     }
 
-    let pkmnSprites: any;
-
-    // const pkmnSpriteData = filterPokemon(sort)
-    //     .map(pkmn => Sprites.getPokemon(pkmn.name, { gen: 'gen5' }));
-    // pkmnSprites = pkmnSpriteData
-    //     .map((pkmn, i) => <img src={pkmn.url} key={i} alt='' />);
-
     useEffect(() => {
-        console.log('fetching list...')
         const fetchData = async () => {
-            const newData = await filterPokemon(sort).then(res => res.map((pkmn: Species, i) => <li key={i}>{pkmn.name}</li>));
+            const newData = await filterPokemon(sort);
             setData(newData);
         };
 
         fetchData();
-    }, [moveList]);
+    }, [moveList, type]);
 
     return (
         // TODO: Return Pokemon component that shows details of each pokemon
         <ul>
-            {data}
+            {data.map(pkmn => Sprites.getPokemon(pkmn.name, { gen: 'gen5' })).map((pkmn, i) => <img src={pkmn.url} key={i} alt='' />)}
         </ul>
     );
 }

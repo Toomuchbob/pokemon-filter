@@ -14,7 +14,8 @@ const FilterElement: FunctionComponent = ({ }) => {
 
     useEffect(() => {
         console.log(selectedMoves)
-    }, [selectedMoves])
+        console.log(type);
+    }, [selectedMoves, type])
 
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
