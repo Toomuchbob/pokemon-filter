@@ -3,6 +3,7 @@ import { FunctionComponent, useEffect, useState } from 'react';
 import { Sprites } from '@pkmn/img';
 import { isEqual } from 'lodash';
 import { Generations } from '@pkmn/data';
+import PokemonElement from './PokemonElement';
 
 interface IPokemonContainerProps {
     sort?: string;
@@ -25,7 +26,7 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, typ
             case 'Level':
                 return [];
             case 'Move':
-            //TODO: Cleanup and refactor code
+                //TODO: Cleanup and refactor code
                 const gens = new Generations(Dex);
                 const foo = Dex.mod('gen9').species.all()
                     .filter(pkmn => pkmn.isNonstandard === null);
@@ -75,10 +76,9 @@ const PokemonContainer: FunctionComponent<IPokemonContainerProps> = ({ sort, typ
     }, [moveList, type]);
 
     return (
-        // TODO: Return Pokemon component that shows details of each pokemon
-        <ul>
-            {data.map(pkmn => Sprites.getPokemon(pkmn.name, { gen: 'gen5' })).map((pkmn, i) => <img src={pkmn.url} key={i} alt='' />)}
-        </ul>
+        <div className='pokemon-container'>
+            {data.map(pkmn => <PokemonElement pkmn={pkmn} />)}
+        </div>
     );
 }
 
